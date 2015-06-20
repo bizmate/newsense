@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js" ng-app="MyApp">
 
 <head>
 
@@ -12,12 +12,12 @@
 	<title>SwotHub</title>
 
 	<!-- Bootstrap Core CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css">
 
 	<!-- Custom Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 	<!-- Plugin CSS -->
 	<link rel="stylesheet" href="css/animate.min.css" type="text/css">
@@ -31,6 +31,21 @@
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- jQuery -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-sanitize.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-route.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap.min.js"></script>
+
+	<script src="js/app/index.js"></script>
+	<script src="js/app/main/main.controller.js"></script>
 
 </head>
 
@@ -65,71 +80,19 @@
 		<!-- /.container-fluid -->
 	</nav>
 
-	<section id="services">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">At Your Service</h2>
-					<hr class="primary">
-				</div>
-			</div>
+<div ng-view></div>
+
+
+<div class="footer bg-dark">
+	<div class="container text-center">
+		<div class="call-to-action">
+			<h2>Free Download at Start Bootstrap!</h2>
+			<a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-						<h3>Sturdy Templates</h3>
-						<p class="text-muted">Our templates are updated regularly so they don't break.</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-						<h3>Ready to Ship</h3>
-						<p class="text-muted">You can use this theme as is, or you can make changes!</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-						<h3>Up to Date</h3>
-						<p class="text-muted">We update dependencies to keep things fresh.</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-						<h3>Made with Love</h3>
-						<p class="text-muted">You have to make your websites with love these days!</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	</div>
+</div>
 
 
-
-	<aside class="bg-dark">
-		<div class="container text-center">
-			<div class="call-to-action">
-				<h2>Free Download at Start Bootstrap!</h2>
-				<a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
-			</div>
-		</div>
-	</aside>
-
-
-	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
-
-	<!-- Plugin JavaScript -->
-	<script src="js/jquery.easing.min.js"></script>
-	<script src="js/jquery.fittext.js"></script>
-	<script src="js/wow.min.js"></script>
 
 
 </body>

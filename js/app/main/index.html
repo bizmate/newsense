@@ -1,4 +1,20 @@
 
+<style>
+	.input-clear {
+		position: absolute;
+		top: 10px;
+		right: 12px;
+		z-index: 3;
+		font-size: 1.5em;
+		color: #CCC;
+	}
+	.card {
+		border: 1px solid #CCC;
+		padding: 20px;
+		margin-bottom: 10px;
+		background-color: #FFF;
+	}
+</style>
 <div class="container content-section">
 
 	<h1 class="text-center page-title">Start Analysis</h1>
@@ -8,12 +24,24 @@
 	<div class="text-center padding-10">
 		<form class="form-inline">
 		  <div class="form-group">
-		    <div class="input-group">
-		      <input type="text" class="form-control input-lg long-input" ng-model="input.companyUrl" id="company_url" placeholder="http://">
+		    <div class="input-group" style="position: relative">
+		      <input type="text" class="form-control input-lg long-input" ng-model="input.companyName" id="company_url" placeholder="Company Name">
+		      <div class="input-clear" ng-click="clearInput()" ng-hide="!input.companyName"><i class="fa fa-times"></i></div>
 		    </div>
 		  </div>
-		  <button type="submit" class="btn btn-lg btn-primary btn-squared" ng-click="analyzeWithUrl()">Start Analysis</button>
+		  <button type="submit" class="btn btn-lg btn-primary btn-squared" ng-disabled="loading" ng-click="analyzeWithName()">
+		  	<span ng-show="loading">Loading ...</span>
+		  	<span ng-hide="loading">Start Analysis</span>
+		  </button>
 		</form>
+	</div>
+
+	<div ng-hide="!input.companyName || loading">
+		<div class="card" ng-repeat="item in list">
+			<p><strong><a href="{{ item.reference }}" target="_blank">{{ item.title }}</a></strong></p>
+			<p>{{ item.summary }}<p>
+			<p><span ng-repeat="date in item.date"> {{ date | date:'medium' }}</span></p>
+		</div>
 	</div>
 
 </div>

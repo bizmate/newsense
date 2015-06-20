@@ -312,6 +312,10 @@ header .header-content .header-content-inner p {
     .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
         font-size: 22px;
     }
+
+    input.long-input {
+        width: 450px !important;
+    }
 }
 
 .call-to-action h2 {
@@ -477,4 +481,25 @@ body {
 
 .content-section {
     margin-top: 45px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.padding-20 {
+    padding: 20px;
+}
+
+.btn-squared {
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    border-radius: 5px !important;
 }

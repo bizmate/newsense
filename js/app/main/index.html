@@ -1,5 +1,19 @@
+
 <div class="container content-section">
 
-	<h1 class="text-center page-title">Main Page</h1>
+	<h1 class="text-center page-title">Start Analysis</h1>
+
+	<div class="text-center padding-10">Please enter the URL of your company's website</div>
+
+	<div class="text-center padding-10">
+		<form class="form-inline">
+		  <div class="form-group">
+		    <div class="input-group">
+		      <input type="text" class="form-control input-lg long-input" ng-model="input.companyUrl" id="company_url" placeholder="http://">
+		    </div>
+		  </div>
+		  <button type="submit" class="btn btn-lg btn-primary btn-squared" ng-click="analyzeWithUrl()">Start Analysis</button>
+		</form>
+	</div>
 
 </div>

@@ -1,3 +1,3 @@
-# SWOTHUB
+# Newsense
 
-The UI part for the Swothub project built during the AngelHack London event.
+The front-end for the newsense project built during the AngelHack London 2015.

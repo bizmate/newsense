@@ -2,8 +2,8 @@
 
 angular.module('MyApp')
 	.controller('MainCtrl',
-		['$scope', '$http', '$routeParams', '$timeout',
-		function ($scope, $http, $routeParams, $timeout) {
+		['$scope', '$http', '$routeParams', '$timeout', '$filter',
+		function ($scope, $http, $routeParams, $timeout, $filter) {
 
 			$scope.input = {
 				companyUrl: null,
@@ -28,6 +28,7 @@ angular.module('MyApp')
 			};
 
 			$scope.pieChartData = [];
+			$scope.lineChartData = [];
 
 			function updatePieChartConfig() {
 				$scope.pieChartConfig = {
@@ -60,8 +61,64 @@ angular.module('MyApp')
 				};
 			}
 
-			$scope.parseServerData = function(data) {
+			function updateLineChartConfig() {
+				$scope.lineChartConfig = {
+	        chart: {
+	            type: 'spline'
+	        },
+	        title: {
+	            text: ''
+	        },
+	        xAxis: {
+	            type: 'datetime',
+	            dateTimeLabelFormats: { // don't display the dummy year
+	                month: '%e',
+	                year: '%b'
+	            },
+	            title: {
+	                text: ''
+	            },
+	            // labels: {
+             //      formatter: function () {
+             //      	console.log(this);
+             //      	var d = new Date(parseInt(this.x));
+             //      	return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+             //          // return Highcharts.dateFormat('%m/%d', this.value);
+             //      }
+             //  },
+	        },
+	        yAxis: {
+	            title: {
+	                text: 'Score'
+	            },
+	            min: -1,
+	        },
+	        tooltip: {
+	            formatter: function() {
+	            		console.log(this);
+                 var d = new Date(parseInt(this.x));
+                  return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 
+              }
+	        },
+
+	        plotOptions: {
+	            spline: {
+	                marker: {
+	                    enabled: true
+	                }
+	            }
+	        },
+
+	        series: [{
+	            name: 'Data',
+	            data: $scope.lineChartData
+	        }]
+	    };
+	  }
+
+
+			$scope.parseServerData = function(data) {
 
 				$scope.list = null;
 
@@ -79,6 +136,8 @@ angular.module('MyApp')
 
 				if (data.results.length) {
 
+					$scope.lineChartData = [];
+
 					angular.forEach(data.results, function(item) {
 						$scope.count++;
 						$scope.totalScore += item.score;
@@ -91,7 +150,23 @@ angular.module('MyApp')
 						else {
 							$scope.sentimentCount['neutral']++;
 						}
+						if (item.date) {
+							var dateData = item.date;
+							var dateNum = dateData[0] + '000';
+							// console.log(dateNum, item.score);
+							item.dateNum = dateNum;
+						}
 					});
+
+					$scope.list = $filter('orderBy')(data.results, 'dateNum');
+					angular.forEach($scope.list, function(item) {
+						if (item.dateNum) {
+							var dateOb = new Date(parseInt(item.dateNum));
+							$scope.lineChartData.push([dateOb, item.score]);
+						}
+					});
+
+					console.log(data.results);
 					$scope.averageScore = $scope.totalScore / $scope.count;
 					$scope.sentimentStats['positive'] = $scope.sentimentCount['positive'] / $scope.count * 100;
 					$scope.sentimentStats['negative'] = $scope.sentimentCount['negative'] / $scope.count * 100;
@@ -103,6 +178,7 @@ angular.module('MyApp')
 					$scope.pieChartData.push(['Neutral', $scope.sentimentStats['neutral']]);
 
 					updatePieChartConfig();
+					updateLineChartConfig();
 
 					$scope.list = data.results;
 

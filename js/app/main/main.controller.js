@@ -229,7 +229,7 @@ angular.module('MyApp')
 				}
 				else {
 					var url = "http://nameless-tor-4963.herokuapp.com/api/news/" + encodeURIComponent($scope.input.companyName)
-								+ '/totals/30.json';
+								+ '/totals/25.json';
 
 					$http.get(url, { cache: true })
 					.success(function(data) {

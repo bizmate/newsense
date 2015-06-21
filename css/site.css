@@ -611,3 +611,22 @@ body {
 .page-intro {
     margin-bottom: 0.8em !important;
 }
+
+.big-text {
+    font-size: 35px;
+}
+
+.score {
+    background-color: #EDEDED;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: bold;
+    padding: 2px 3px;
+    margin-bottom: 3px;
+    width: 10px;
+    height: 10px;
+}
+
+.bg-green {
+    background-color: rgb(144, 237, 125) !important;
+}

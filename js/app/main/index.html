@@ -1,18 +1,17 @@
-
 <style>
-
+.panel-heading {
+	font-weight: bold;
+}
 </style>
 <div class="container content-section">
 
 	<h1 class="text-center page-title">News Analysis</h1>
 
-	<div class="text-center padding-10">Please Enter A Company Name</div>
-
 	<div class="text-center padding-10">
 		<form class="form-inline">
 		  <div class="form-group">
 		    <div class="input-group" style="position: relative">
-		      <input type="text" class="form-control input-lg long-input" ng-model="input.companyName" id="company_url" placeholder="Company Name">
+		      <input type="text" class="form-control input-lg long-input" ng-model="input.companyName" id="company_url" placeholder="Please Enter A Company Name">
 		      <div class="input-clear" ng-click="clearInput()" ng-hide="!input.companyName"><i class="fa fa-times"></i></div>
 		    </div>
 		  </div>
@@ -31,7 +30,7 @@
 	</div>
 
 	<div ng-hide="!loading" class="text-center" style="margin: 30px">
-		<img src="img/big_preloader.gif" />
+		<img src="img/Preloader_7.gif" />
 	</div>
 
 	<div ng-show="!loading && !list.length" style="color: #FFF; padding: 40px 20px; font-size: 200px; text-align: center">
@@ -52,11 +51,11 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Overall Sentiment</div>
 						<div class="panel-body">
-							<span class="sore-icon score-positive fa-stack fa-lg" ng-show="averageScore > 0">
+							<span class="sore-icon score-positive fa-stack fa-lg big-text" ng-show="averageScore > 0">
 							  <i class="fa fa-circle fa-stack-2x"></i>
 							  <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 							</span>
-							<span class="sore-icon score-negative fa-stack fa-lg" ng-show="averageScore < 0">
+							<span class="sore-icon score-negative fa-stack fa-lg big-text" ng-show="averageScore < 0">
 							  <i class="fa fa-circle fa-stack-2x"></i>
 							  <i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
 							</span>
@@ -67,12 +66,11 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Stats</div>
 						<div class="panel-body">
-							<table class="stats-table">
-								<tr><td>Total News:</td><td class="text-right">{{ count }}</td></tr>
-								<tr><td>Positive News:</td><td class="text-right">{{ sentimentCount['positive'] }}</td></tr>
-								<tr><td>Negative News:</td><td class="text-right">{{ sentimentCount['negative'] }}</td></tr>
-								<tr><td>Neutral News:</td><td class="text-right">{{ sentimentCount['neutral'] }}</td></tr>
-								<tr><td></td><td></td></tr>
+							<table class="stats-table" width="100%">
+								<tr><td>Positive News:</td><td class="text-right score bg-green">{{ sentimentCount['positive'] }}</td></tr>
+								<tr><td>Negative News:</td><td class="text-right score bg-red">{{ sentimentCount['negative'] }}</td></tr>
+								<tr><td>Neutral News:</td><td class="text-right score bg-gray">{{ sentimentCount['neutral'] }}</td></tr>
+								<tr><td>Total News:</td><td class="text-right score">{{ count }}</td></tr>
 							</table>
 						</div>
 					</div>
@@ -87,8 +85,11 @@
 			</div>
 		</div>
 
-		<div class="card">
-		<highchart id="line-chart" config="lineChartConfig"></highchart>
+		<div class="panel panel-default" ng-show="relatedCompanies">
+			<div class="panel-heading">Sentiment Performance Over Time</div>
+			<div class="panel-body">
+				<highchart id="line-chart" config="lineChartConfig"></highchart>
+			</div>
 		</div>
 
 		<div class="panel panel-default" ng-show="relatedCompanies">

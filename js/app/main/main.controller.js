@@ -133,7 +133,7 @@ angular.module('MyApp')
 	        },
 
 	        series: [{
-	            name: 'Time',
+	            name: 'Sentiment',
 	            data: $scope.lineChartData
 	        }]
 	    };

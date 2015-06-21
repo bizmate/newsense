@@ -29,21 +29,56 @@
 
 	<div ng-hide="!list.length || loading">
 
-		<div class="card news-summary">
-			<h2 class="page-title text-center">{{ input.companyName }}</h2>
-			<span class="news-summary-score">Score: {{ averageScore | number: 2}}</span>
-			<span class="sore-icon score-positive fa-stack fa-lg" ng-show="averageScore > 0">
-			  <i class="fa fa-circle fa-stack-2x"></i>
-			  <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
-			</span>
-			<span class="sore-icon score-negative fa-stack fa-lg" ng-show="averageScore < 0">
-			  <i class="fa fa-circle fa-stack-2x"></i>
-			  <i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
-			</span>
+		<div class="panel panel-default" ng-show="relatedCompanies">
+			<div class="panel-heading">Related Companies</div>
+			<div class="panel-body">
+				<div class="company-tag" ng-repeat="company in relatedCompanies track by $index"><a href="#/company/{{ company }}">{{ company }}</a></div>
+			</div>
 		</div>
 
-		<div class="card">
-			<highchart id="pie-chart" config="pieChartConfig"></highchart>
+		<div class="panel panel-default">
+			<div class="panel-heading">Sentiment</div>
+			<div class="panel-body">
+				<div class="row">
+
+				<div class="col-md-4">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">Overall Sentiment</div>
+						<div class="panel-body">
+							<span class="sore-icon score-positive fa-stack fa-lg" ng-show="averageScore > 0">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+							</span>
+							<span class="sore-icon score-negative fa-stack fa-lg" ng-show="averageScore < 0">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
+							</span>
+							<span>Score: {{ averageScore | number: 2}}</span>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">Stats</div>
+						<div class="panel-body">
+							<table class="stats-table">
+								<tr><td>Total News:</td><td class="text-right">{{ count }}</td></tr>
+								<tr><td>Positive News:</td><td class="text-right">{{ sentimentCount['positive'] }}</td></tr>
+								<tr><td>Negative News:</td><td class="text-right">{{ sentimentCount['negative'] }}</td></tr>
+								<tr><td>Neutral News:</td><td class="text-right">{{ sentimentCount['neutral'] }}</td></tr>
+								<tr><td></td><td></td></tr>
+							</table>
+						</div>
+					</div>
+
+				</div><!-- col -->
+
+				<div class="col-md-8">
+					<highchart id="pie-chart" config="pieChartConfig"></highchart>
+				</div>
+
+			</div><!-- row -->
+			</div>
 		</div>
 
 		<div class="card" ng-repeat="item in list">

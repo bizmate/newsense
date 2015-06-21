@@ -8,6 +8,10 @@ angular.module('MyApp', ['ngSanitize', 'ngRoute', 'ui.bootstrap', 'highcharts-ng
 				templateUrl: 'js/app/main/index.html',
 				controller: 'MainCtrl'
 			})
+			.when('/company/:companyNm', {
+				templateUrl: 'js/app/main/index.html',
+				controller: 'MainCtrl'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});

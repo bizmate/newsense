@@ -3,7 +3,7 @@ html,
 body {
     width: 100%;
     height: 100%;
-    background-color: #EEE;
+    background-color: #DADADA;
 }
 
 body {
@@ -551,4 +551,24 @@ body {
   margin-bottom: -20px;
   margin-right: -20px;
   margin-left: -20px;
+}
+
+.stats-table td {
+    padding: 8px;
+}
+
+.company-tag {
+    display: inline-block;
+    padding: 8px;
+    background-color: rgb(124, 181, 236);
+    border-radius: 3px;
+    color: #FFF;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.company-tag a {
+    color: #FFF;
+    text-decoration: none;
 }

@@ -4,9 +4,9 @@
 </style>
 <div class="container content-section">
 
-	<h1 class="text-center page-title">Start Analysis</h1>
+	<h1 class="text-center page-title">News Analysis</h1>
 
-	<div class="text-center padding-10">Please enter the URL of your company's website</div>
+	<div class="text-center padding-10">Please Enter A Company Name</div>
 
 	<div class="text-center padding-10">
 		<form class="form-inline">
@@ -25,6 +25,10 @@
 
 	<div ng-hide="!loading" class="text-center" style="margin: 30px">
 		<img src="img/big_preloader.gif" />
+	</div>
+
+	<div ng-show="!loading && !list.length" style="color: #FFF; padding: 40px 20px; font-size: 200px; text-align: center">
+		<i class="fa fa-search"></i>
 	</div>
 
 	<div ng-hide="!list.length || loading">

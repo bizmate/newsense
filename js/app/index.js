@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('MyApp', ['ngSanitize', 'ngRoute', 'ui.bootstrap'])
+angular.module('MyApp', ['ngSanitize', 'ngRoute', 'ui.bootstrap', 'highcharts-ng'])
 	.config(function ($routeProvider) {
 		$routeProvider
 			.when('/', {

@@ -607,3 +607,7 @@ body {
 .bg-red {
     background-color: #f05f40 !important;
 }
+
+.page-intro {
+    margin-bottom: 0.8em !important;
+}

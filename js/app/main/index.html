@@ -40,12 +40,7 @@
 
 	<div ng-hide="!list.length || loading">
 
-		<div class="panel panel-default" ng-show="relatedCompanies">
-			<div class="panel-heading">Related Companies Mentioned in News</div>
-			<div class="panel-body">
-				<div class="company-tag" ng-hide="company == input.comanyName" ng-repeat="company in relatedCompanies track by $index"><a href="#/company/{{ company }}">{{ company }}</a></div>
-			</div>
-		</div>
+
 
 		<div class="panel panel-default">
 			<div class="panel-heading">Sentiment</div>
@@ -94,6 +89,13 @@
 
 		<div class="card">
 		<highchart id="line-chart" config="lineChartConfig"></highchart>
+		</div>
+
+		<div class="panel panel-default" ng-show="relatedCompanies">
+			<div class="panel-heading">Related Companies Mentioned in News</div>
+			<div class="panel-body">
+				<div class="company-tag" ng-hide="company == input.comanyName" ng-repeat="company in relatedCompanies track by $index"><a href="#/company/{{ company }}">{{ company }}</a></div>
+			</div>
 		</div>
 
 		<div class="card" ng-repeat="item in list | orderBy: '-dateNum' ">

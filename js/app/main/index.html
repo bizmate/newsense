@@ -29,8 +29,9 @@
 		<a class="search-history-item" href="#/company/{{ company }}" ng-repeat="company in searchHistory track by $index">{{ company }}</a>
 	</div>
 
-	<div ng-hide="!loading" class="text-center" style="margin: 30px">
-		<img src="img/Preloader_7.gif" />
+	<div ng-hide="!loading" class="card text-center clearfix" style="margin: 30px; padding: 20px; color: #888">
+		<img src="img/Preloader_7.gif" style="float:left; margin: 5px" />
+		<h2>"32% admitted to being overwhelmed by data" - Newsense provides you with a powerful, but simple solution</h2>
 	</div>
 
 	<div ng-show="!loading && !list.length" style="color: #FFF; padding: 40px 20px; font-size: 200px; text-align: center">

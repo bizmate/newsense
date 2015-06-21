@@ -15,6 +15,8 @@ angular.module('MyApp')
 
 			$scope.relatedCompanies = null;
 
+			$scope.showSearchHistory = false;
+
 			$scope.sentimentCount = {
 				'neutral': 0,
 				'positive': 0,
@@ -29,6 +31,22 @@ angular.module('MyApp')
 
 			$scope.pieChartData = [];
 			$scope.lineChartData = [];
+			$scope.searchHistory = [];
+
+			$scope.getSearchHistory = function() {
+				for (var key in localStorage){
+					// console.log(key);
+					var regexp = /search_(\S+)/i;
+					var matches = key.match(regexp);
+					if (matches) {
+						var match = matches[1];
+						match = match.replace("%20", " ");
+						$scope.searchHistory.push(match);
+					}
+				}
+			}
+
+			$scope.getSearchHistory();
 
 			function updatePieChartConfig() {
 				$scope.pieChartConfig = {
@@ -71,21 +89,25 @@ angular.module('MyApp')
 	        },
 	        xAxis: {
 	            type: 'datetime',
-	            dateTimeLabelFormats: { // don't display the dummy year
-	                month: '%e',
-	                year: '%b'
-	            },
+	            // dateTimeLabelFormats: { // don't display the dummy year
+	            //     month: '%e',
+	            //     year: '%b'
+	            // },
 	            title: {
 	                text: ''
 	            },
 	            // labels: {
-             //      formatter: function () {
-             //      	console.log(this);
-             //      	var d = new Date(parseInt(this.x));
-             //      	return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-             //          // return Highcharts.dateFormat('%m/%d', this.value);
-             //      }
-             //  },
+	            // 	display: false
+	            // }
+	            labels: {
+                  formatter: function () {
+                  	return '';
+                  	// console.log(this);
+                  	// var d = new Date(parseInt(this.x));
+                  	// return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+                   //    // return Highcharts.dateFormat('%m/%d', this.value);
+                  }
+              },
 	        },
 	        yAxis: {
 	            title: {
@@ -93,25 +115,25 @@ angular.module('MyApp')
 	            },
 	            min: -1,
 	        },
-	        tooltip: {
-	            formatter: function() {
-	            		console.log(this);
-                 var d = new Date(parseInt(this.x));
-                  return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+	        // tooltip: {
+	            // formatter: function() {
+	            // 		console.log(this);
+             //     var d = new Date(parseInt(this.x));
+             //      return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 
-              }
-	        },
+             //  }
+	        // },
 
 	        plotOptions: {
 	            spline: {
-	                marker: {
-	                    enabled: true
-	                }
+	                // marker: {
+	                //     enabled: true
+	                // }
 	            }
 	        },
 
 	        series: [{
-	            name: 'Data',
+	            name: 'Time',
 	            data: $scope.lineChartData
 	        }]
 	    };
@@ -162,7 +184,7 @@ angular.module('MyApp')
 					angular.forEach($scope.list, function(item) {
 						if (item.dateNum) {
 							var dateOb = new Date(parseInt(item.dateNum));
-							$scope.lineChartData.push([dateOb, item.score]);
+							$scope.lineChartData.push([item.dateNum, item.score]);
 						}
 					});
 

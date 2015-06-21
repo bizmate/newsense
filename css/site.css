@@ -572,3 +572,38 @@ body {
     color: #FFF;
     text-decoration: none;
 }
+
+.search-history {
+    text-align: center;
+    padding: 15px;
+    background-color: #FFF;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.search-history-item {
+    display: inline-block;
+    padding: 8px;
+    font-size: 0.9em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: #FAD9D9;
+}
+
+.search-history-item {
+    color: #444;
+    text-decoration: none;
+}
+
+.text-red {
+    color: #f05f40 !important;
+}
+
+.text-black {
+    color: #444;
+}
+
+.bg-red {
+    background-color: #f05f40 !important;
+}

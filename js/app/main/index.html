@@ -23,6 +23,13 @@
 		</form>
 	</div>
 
+	<div class="text-center" style="margin-bottom: 10px">
+		<button class="btn btn-sm btn-default btn-squared" style="color: #9E9E9E" ng-click="showSearchHistory = !showSearchHistory"><i class="fa fa-history"></i> Previous Searches</button>
+	</div>
+	<div class="search-history" style="margin-bottom: 10px" ng-show="showSearchHistory">
+		<a class="search-history-item" href="#/company/{{ company }}" ng-repeat="company in searchHistory track by $index">{{ company }}</a>
+	</div>
+
 	<div ng-hide="!loading" class="text-center" style="margin: 30px">
 		<img src="img/big_preloader.gif" />
 	</div>

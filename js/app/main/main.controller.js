@@ -228,8 +228,8 @@ angular.module('MyApp')
 					}, 1000);
 				}
 				else {
-					var url = "http://nameless-tor-4963.herokuapp.com/api/news/" + encodeURIComponent($scope.input.companyName)
-								+ '/totals/25.json';
+					var url = "http://newsense.io/api/news/" + encodeURIComponent($scope.input.companyName)
+								+ '/totals/10.json';
 
 					$http.get(url, { cache: true })
 					.success(function(data) {
